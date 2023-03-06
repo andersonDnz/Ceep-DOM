@@ -1,40 +1,66 @@
-const criarTarefa = (evento) => {
-  evento.preventDefault();
+( () => {
 
-  const lista = document.querySelector("[data-list]");
-  const input = document.querySelector("[data-form-input]");
-  const valor = input.value;
+  const criarTarefa = (evento) => {
 
-  const tarefa = document.createElement("li");
-  tarefa.classList.add("task");
-  const conteudo = `<p class="content">${valor}</p>`;
+    evento.preventDefault();
 
-  tarefa.innerHTML = conteudo;
+    const lista = document.querySelector("[data-list]");
+    const input = document.querySelector("[data-form-input]");
+    const valor = input.value;
 
-  tarefa.appendChild(BotaoConclui());
-  lista.appendChild(tarefa);
-  input.value = "";
-};
+    const tarefa = document.createElement("li");
+    tarefa.classList.add("task");
+    const conteudo = `<p class="content">${valor}</p>`;
 
-const novaTarefa = document.querySelector("[data-form-button]");
+    tarefa.innerHTML = conteudo;
 
-novaTarefa.addEventListener("click", criarTarefa);
+    tarefa.appendChild(BotaoConclui());
+    tarefa.appendChild(botaoDeleta())
+    lista.appendChild(tarefa);
+    input.value = "";
+  };
 
-const BotaoConclui = () => {
-  const botaoConclui = document.createElement("button");
+  const novaTarefa = document.querySelector("[data-form-button]");
 
-  botaoConclui.classList.add("check-button");
-  botaoConclui.innerText = "Concluir";
+  novaTarefa.addEventListener("click", criarTarefa);
 
-  botaoConclui.addEventListener("click", concluirTarefa);
+  const BotaoConclui = () => {
+    const botaoConclui = document.createElement("button");
 
-  return botaoConclui;
-};
+    botaoConclui.classList.add("check-button");
+    botaoConclui.innerText = "Concluir";
 
-const concluirTarefa = (evento) => {
-  const botaoConclui = evento.target;
+    botaoConclui.addEventListener("click", concluirTarefa);
 
-  const tarefaCompleta = botaoConclui.parentElement;
+    return botaoConclui;
+  };
 
-  tarefaCompleta.classList.toggle("done");
-};
+  const concluirTarefa = (evento) => {
+    const botaoConclui = evento.target;
+
+    const tarefaCompleta = botaoConclui.parentElement;
+
+    tarefaCompleta.classList.toggle("done");
+  };
+
+  const botaoDeleta = () => {
+
+    const botaoDeleta = document.createElement("button")
+
+    botaoDeleta.innerText = "Deletar"
+    botaoDeleta.addEventListener('click', deletarTarefa)
+
+    return botaoDeleta;
+  }
+
+  const deletarTarefa = ( evento ) => {
+    const botaoDeleta = evento.target
+
+    const tarefaCompleta = botaoDeleta.parentElement
+
+    tarefaCompleta.remove()
+
+    return botaoDeleta;
+  }
+
+})();
