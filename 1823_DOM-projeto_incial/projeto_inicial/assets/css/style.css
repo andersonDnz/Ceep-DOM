@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  ;
+  background-image: linear-gradient(#060e1b, #0b1b35, #09182f);
 }
 
 .app {
@@ -12,7 +12,7 @@ body {
 }
 
 .todo-list {
-  background-color: #0b2027;
+  background-color: #430e73;
   font-family: "Space Mono", monospace;
   padding: 1rem;
   min-width: 400px;
@@ -70,7 +70,6 @@ body {
 }
 
 .todo-list {
-  background-color: #0b2027;
   font-family: "Space Mono", monospace;
   padding: 1rem;
   border-radius: 12px;
@@ -92,7 +91,7 @@ body {
 }
 .form-input,
 .form-button {
-  border-radius: 0;
+  border-radius: 5px ;
   padding: 0.75rem;
   font-size: 0.75rem;
 }
